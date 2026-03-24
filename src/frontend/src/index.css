@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Navy: #0B1F3A */
+    --navy: 0.22 0.06 243;
+    /* Navy light: #102A4A */
+    --navy-light: 0.26 0.07 243;
+    /* Off-white: #F3F5F8 */
+    --background: 0.97 0.005 243;
+    /* Card white: #FFFFFF */
+    --card: 1 0 0;
+    /* Border: #E4E8EF */
+    --border: 0.91 0.01 243;
+    /* Primary text: #111827 */
+    --foreground: 0.18 0.02 250;
+    /* Secondary text: #6B7280 */
+    --muted-foreground: 0.5 0.01 250;
+    /* Gold: #D6B36A */
+    --gold: 0.77 0.1 78;
+    /* Gold darker: #C8A357 */
+    --gold-dark: 0.71 0.12 73;
+    /* White text */
+    --white: 1 0 0;
+
+    --primary: var(--navy);
+    --primary-foreground: var(--white);
+    --secondary: 0.91 0.01 243;
+    --secondary-foreground: var(--foreground);
+    --muted: 0.94 0.005 243;
+    --accent: var(--gold);
+    --accent-foreground: var(--navy);
+    --destructive: 0.55 0.2 25;
+    --destructive-foreground: 1 0 0;
+    --input: 0.91 0.01 243;
+    --ring: var(--gold);
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Playfair Display", serif;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Gold line decoration */
+.gold-underline {
+  position: relative;
+  display: inline-block;
+}
+.gold-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: oklch(var(--gold));
+}
+
+/* Section transitions */
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.section-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero decoration */
+.hero-decoration {
+  position: absolute;
+  border: 1px solid oklch(var(--gold) / 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
